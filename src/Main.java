@@ -96,6 +96,104 @@ public class Rectangle {
     }
 }
 
+	    
+	    //1
+	    import java.util.Scanner;
+
+public class Cursor {
+    private int x;
+    private int y;
+    private boolean isHorizontal;
+    private int size;
+
+    public Cursor(int x, int y, boolean isHorizontal, int size) {
+        this.x = x;
+        this.y = y;
+        this.isHorizontal = isHorizontal;
+        this.size = size;
+    }
+
+    public void moveRight() {
+        x++;
+    }
+
+    public void moveLeft() {
+        x--;
+    }
+
+    public void moveUp() {
+        y--;
+    }
+
+    public void moveDown() {
+        y++;
+    }
+
+    public void setHorizontal(boolean isHorizontal) {
+        this.isHorizontal = isHorizontal;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void hide() {
+        System.out.println("Курсор сховано");
+    }
+
+    public void show() {
+        System.out.println("Курсор показано");
+    }
+
+    public void printCursor() {
+        System.out.println("Координати курсору: (" + x + ", " + y + ")");
+        System.out.println("Вигляд курсору: " + (isHorizontal ? "горизонтальний" : "вертикальний"));
+        System.out.println("Розмір курсору: " + size);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введіть координату x:");
+        int x = scanner.nextInt();
+        System.out.println("Введіть координату y:");
+        int y = scanner.nextInt();
+        System.out.println("Введіть вигляд курсору (1 - горизонтальний, 0 - вертикальний):");
+        boolean isHorizontal = scanner.nextInt() == 1;
+        
+        int size = 0;
+        do {
+            System.out.println("Введіть розмір курсору (від 1 до 15):");
+            size = scanner.nextInt();
+        } while (size < 1 || size > 15);
+
+        Cursor cursor = new Cursor(x, y, isHorizontal, size);
+
+        cursor.printCursor();
+
+        System.out.println("Введіть на скільки збільшити/зменшити координату x:");
+        int dx = scanner.nextInt();
+        cursor.x += dx;
+        System.out.println("Введіть на скільки збільшити/зменшити координату y:");
+        int dy = scanner.nextInt();
+        cursor.y += dy;
+        System.out.println("Введіть на скільки збільшити/зменшити розмір курсору:");
+        int sizeChange = scanner.nextInt();
+        cursor.size += sizeChange;
+
+        System.out.println("Змінити вигляд курсору (1 - горизонтальний, 0 - вертикальний):");
+        int isHorizontalInt = scanner.nextInt();
+        if (isHorizontalInt == 1) {
+            cursor.setHorizontal(true);
+        } else if (isHorizontalInt == 0) {
+            cursor.setHorizontal(false);
+        }
+
+        cursor.printCursor();
+    }
+}
+
+
 
     }
 }
