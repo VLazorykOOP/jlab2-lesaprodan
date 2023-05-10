@@ -192,6 +192,98 @@ public class Cursor {
         cursor.printCursor();
     }
 }
+	    
+	    //3
+	    import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Queue {
+   private LinkedList<Integer> queue;
+
+   public Queue() {
+      queue = new LinkedList<Integer>();
+   }
+
+   public void enqueue(int item) {
+      queue.addLast(item);
+   }
+
+   public void dequeue(int itemToRemove) {
+      if (!queue.isEmpty()) {
+         if (queue.getFirst() == itemToRemove) {
+            queue.removeFirst();
+         } else {
+            queue.remove((Integer) itemToRemove);
+         }
+      }
+   }
+
+   public boolean isEmpty() {
+      return queue.isEmpty();
+   }
+
+   public boolean contains(int item) {
+      return queue.contains(item);
+   }
+
+   public int size() {
+      return queue.size();
+   }
+
+   public void print() {
+      System.out.print("Черга: ");
+      for (int item : queue) {
+         System.out.print(item + " ");
+      }
+      System.out.println();
+   }
+
+   public static void main(String[] args) {
+      Scanner input = new Scanner(System.in);
+      Queue queue = new Queue();
+
+      System.out.print("Введіть елементи черги, розділені пробілом: ");
+      String line = input.nextLine();
+      String[] items = line.split(" ");
+      for (String item : items) {
+         queue.enqueue(Integer.parseInt(item));
+      }
+
+      int size = queue.size();
+      System.out.println("Розмір черги: " + size);
+    
+
+      System.out.print("Введіть елементи для додавання в чергу: ");
+      line = input.nextLine();
+      items = line.split(" ");
+      for (String item : items) {
+         queue.enqueue(Integer.parseInt(item));
+      }
+
+      size = queue.size();
+      System.out.println("Розмір черги: " + size);
+      queue.print();
+
+      System.out.print("Введіть елемент, який потрібно вилучити: ");
+      int itemToRemove = input.nextInt();
+      if (queue.contains(itemToRemove)) {
+         queue.dequeue(itemToRemove);
+         System.out.println("Вилучений елемент: " + itemToRemove);
+         queue.print();
+      } else {
+         System.out.println("Черга не містить елемент " + itemToRemove);
+      }
+
+      System.out.print("Введіть елемент, який потрібно знайти: ");
+      int searchItem = input.nextInt();
+      boolean contains = queue.contains(searchItem);
+      System.out.println("Черга містить елемент " + searchItem +": " + contains);
+   }
+}
+
+
+
+
 
 
 
